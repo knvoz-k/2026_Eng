@@ -1,0 +1,64 @@
+cmake_minimum_required(VERSION 3.22)
+
+enable_language(C ASM)
+
+set(MX_Defines_Syms
+    USE_HAL_DRIVER
+    STM32F407xx
+    $<$<CONFIG:Debug>:DEBUG>
+)
+
+set(MX_Include_Dirs
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../Core/Inc"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../Drivers/STM32F4xx_HAL_Driver/Inc"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../Drivers/CMSIS/Device/ST/STM32F4xx/Include"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../Drivers/CMSIS/Include"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../APP"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../BSP"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../MDK-ARM/RTE/Device"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../MDK-ARM/RTE/_EC_Car"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../MDK-ARM/RTE/Device/STM32F407VETx"
+)
+
+set(MX_Sources
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../Core/Src/main.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../Core/Src/gpio.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../Core/Src/dma.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../Core/Src/tim.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../Core/Src/usart.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../Core/Src/stm32f4xx_it.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../Core/Src/stm32f4xx_hal_msp.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../APP/task.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../APP/control.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../BSP/maixcam.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../BSP/key.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../BSP/motor.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../BSP/encoder.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../MDK-ARM/startup_stm32f407xx.s"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../Core/Src/system_stm32f4xx.c"
+)
+
+add_library(stm32cubemx INTERFACE)
+target_include_directories(stm32cubemx INTERFACE ${MX_Include_Dirs})
+target_compile_definitions(stm32cubemx INTERFACE ${MX_Defines_Syms})
+
+target_sources(${CMAKE_PROJECT_NAME} PRIVATE ${MX_Sources})
+target_link_libraries(${CMAKE_PROJECT_NAME} stm32cubemx)
+set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES ADDITIONAL_CLEAN_FILES ${CMAKE_PROJECT_NAME}.map)
