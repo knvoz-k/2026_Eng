@@ -7,3 +7,4 @@ generate_vscode_cmake_index.py
 .vscode/
 __pycache__/
 build/
+cmake/
