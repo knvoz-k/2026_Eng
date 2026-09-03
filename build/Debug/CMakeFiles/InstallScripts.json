@@ -1,8 +1,0 @@
-{
-	"InstallScripts" : 
-	[
-		"F:/Engineering Competition/EC_Car/build/Debug/cmake_install.cmake",
-		"F:/Engineering Competition/EC_Car/build/Debug/cmake/stm32cubemx/cmake_install.cmake"
-	],
-	"Parallel" : false
-}
