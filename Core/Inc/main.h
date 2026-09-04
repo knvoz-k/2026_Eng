@@ -64,8 +64,6 @@ void Error_Handler(void);
 #define RIGHT_ENCODER_A_GPIO_Port GPIOA
 #define RIGHT_ENCODER_B_Pin GPIO_PIN_1
 #define RIGHT_ENCODER_B_GPIO_Port GPIOA
-#define MAIXCAM_SIDE_TX_Pin GPIO_PIN_2
-#define MAIXCAM_SIDE_TX_GPIO_Port GPIOA
 #define MAIXCAM_SIDE_RX_Pin GPIO_PIN_3
 #define MAIXCAM_SIDE_RX_GPIO_Port GPIOA
 #define MOTOR_L_IN1_Pin GPIO_PIN_9
@@ -88,6 +86,8 @@ void Error_Handler(void);
 #define LOG_TX_GPIO_Port GPIOC
 #define LOG_RX_Pin GPIO_PIN_2
 #define LOG_RX_GPIO_Port GPIOD
+#define MAIXCAM_SIDE_TX_Pin GPIO_PIN_5
+#define MAIXCAM_SIDE_TX_GPIO_Port GPIOD
 
 /* USER CODE BEGIN Private defines */
 

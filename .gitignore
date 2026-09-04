@@ -1,10 +1,15 @@
-# 忽略单个文件
-CMakeLists.txt
-CMakePresets.json
-generate_vscode_cmake_index.py
+README_VSCode_Setup.md
+update_vscode_index.bat
+update_vscode_intellisense.py
+关于举办2026年广东省工科大学生实验综合技能竞赛通知及实施方案.pdf
 
-# 忽略整个文件夹，末尾加斜杠 /
+
+
+
 .vscode/
 __pycache__/
-build/
-cmake/
+
+
+
+MDK-ARM/out/
+MDK-ARM/*.uvguix.*

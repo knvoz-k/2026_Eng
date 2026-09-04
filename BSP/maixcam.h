@@ -8,7 +8,7 @@ typedef struct {
     uint16_t data1;
     uint16_t data2;
     uint16_t data3;
-    uint8_t valid;
+    volatile uint8_t valid;
 } Maixcam_front_t;
 
 typedef struct {
@@ -18,7 +18,7 @@ typedef struct {
     uint16_t red_y;
     uint16_t green_y;
     uint16_t blue_y;
-    uint8_t valid;
+    volatile uint8_t valid;
 } Maixcam_side_t;
 
 extern Maixcam_front_t maixcam_front;

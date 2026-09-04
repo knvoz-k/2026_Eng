@@ -46,5 +46,18 @@ void control_run_10ms(void) {
 
 }
 
+uint8_t is_control_done(void)  {
+    return control_done_flag;
+}
+
+uint8_t is_control_active(void) {
+    return control_active;
+}
+
+
+
+
+
+
 
 
